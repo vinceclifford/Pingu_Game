@@ -224,9 +224,6 @@ public class GameBoard {
 					gameOutcome = GameOutcome.OPEN;
             }
 
-            // TODO Backlog Item 11: The loser car is crunched and stops driving
-
-            // TODO Backlog Item 11: The player gets notified when he looses or wins the game*/
             /*
              * Hint: you should set the attribute gameOutcome accordingly. Use 'isWinner()'
              * below for your implementation
