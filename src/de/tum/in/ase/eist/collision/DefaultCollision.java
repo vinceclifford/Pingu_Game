@@ -18,7 +18,7 @@ public class DefaultCollision extends Collision {
 		// TODO Backlog Item 11: Collisions follow the "right before left" rule, and thus right-most
 		// cars on the screen win the collisions
 
-		/*Point2D p1 = getCar1().getPosition();
+		Point2D p1 = getCar1().getPosition();
 		Point2D p2 = getCar2().getPosition();
 
 		Car winnerCar = null;
@@ -27,7 +27,6 @@ public class DefaultCollision extends Collision {
 		} else {
 			winnerCar = this.getCar1();
 		}
-		return winnerCar;*/
-		return null;
+		return winnerCar;
 	}
 }
