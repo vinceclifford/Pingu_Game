@@ -36,7 +36,7 @@ import javafx.scene.paint.ImagePattern;
 public class GameBoardUI extends Canvas {
 
     private static final Color BACKGROUND_COLOR = Color.WHITE;
-    private int gameAt = 5;
+    private int gameAt = 0;
     /**
      * The update period of the game in ms, this gives us 25 fps.
      */
@@ -138,7 +138,6 @@ public class GameBoardUI extends Canvas {
 
             this.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent e) -> {
                 if (e.getText().equals("x") || e.getText().equals("X")) {
-                    System.out.println("Hallo");
                     keyboardSteering.xPressed();
                 }
             });

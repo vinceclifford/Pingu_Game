@@ -29,7 +29,7 @@ public class MIT_Car extends Car{
 
     @Override
     public void drive(Dimension2D gameBoardSize){
-        if(drive == 20){
+        if(drive == 20 && !isCrunched()){
             setRandomPosition(gameBoardSize);
             setRandomSpeed();
             setRandomDirection();

@@ -27,11 +27,11 @@ public class Stanford_Car extends Car {
     public void drive(Dimension2D gameBoardSize) {
 
 
-        if (counterInvisibility == 45) {
+        if (counterInvisibility == 45 && !isCrunched()) {
             counterInvisibility = 0;
         }
 
-        if (counterSpawn == 20) {
+        if (counterSpawn == 20 && !isCrunched()) {
             setRandomPosition(gameBoardSize);
             setRandomDirection();
             counterSpawn = 0;
