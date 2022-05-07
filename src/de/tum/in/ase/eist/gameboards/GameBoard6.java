@@ -13,7 +13,7 @@ public class GameBoard6 extends GameBoard {
 
     @Override
     public void createCars(){
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 4; i++)
             getCars().add(new Stanford_Car(getSize(), false));
     }
 }

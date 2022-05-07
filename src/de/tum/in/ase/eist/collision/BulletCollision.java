@@ -1,30 +1,30 @@
 package de.tum.in.ase.eist.collision;
 
-import de.tum.in.ase.eist.Dimension2D;
 import de.tum.in.ase.eist.Point2D;
 import de.tum.in.ase.eist.car.Bullet_Car;
 import de.tum.in.ase.eist.car.Car;
 
-public class PinguCollision extends Collision{
+public class BulletCollision extends Collision {
 
-    public PinguCollision(Car car1, Car car2) {
+    public BulletCollision(Car car1, Car car2) {
         super(car1, car2);
     }
 
     @Override
     public boolean detectCollision() {
-        if(!(getCar2() instanceof Bullet_Car))
-            return detectCollisionHelper();
-        return false; 
+        return detectCollisionHelper();
     }
 
     @Override
     public Car evaluate() {
         Point2D p1 = getCar1().getPosition();
         Point2D p2 = getCar2().getPosition();
+        // Both bullet and car will always be crunshed!
+
 
         Car winnerCar = getCar2();
 
         return winnerCar;
     }
+
 }

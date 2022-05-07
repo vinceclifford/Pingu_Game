@@ -11,7 +11,7 @@ public class LMU_Car extends Car{
             LMU_CAR_IMAGE_FILE = "elon.png";
             setSize(new Dimension2D(40, 31));
         } else {
-            setSize(new Dimension2D(37,37));
+            setSize(new Dimension2D(34,34));
 
         }
         setPosition(x, y);

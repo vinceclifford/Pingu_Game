@@ -46,32 +46,41 @@ public class BumpersApplication extends Application {
         Button level0Button = LevelButton.createLevelButton("Yes");
         Label level0Text = LevelText.createLevelText(
                 "Even though I'm not a world-renowned philosopher I do believe there is truth to the following quote:\"You desire what you don't have\". Over the first semester, every TUM Computer Science student has formed a deep connection with penguins. We love and care for them. \n" +
-                        "Unfortunately, other universities have gotten envious, including prestigious colleges such as Stanford, MIT, and Harvard! Who can blame them? After all, we won Nobel prizes with the help of the penguins. They want to collaborate with the penguins themselves! They managed to kidnap our beloved penguins! With tears in their eyes, all of the TUM freshmen come together and try to help. Can you help?");
+                        "Unfortunately, other universities have gotten envious, including prestigious colleges such as Stanford, MIT, and Harvard! Who can blame them? After all, we win Nobel prizes with the help of the penguins. They want to collaborate with the penguins themselves! They managed to kidnap our beloved penguins! With tears in their eyes, all of the TUM freshmen come together and try to help. Can you help?");
 
         VBox layout0 = new VBox(40);
         layout0.setAlignment(Pos.TOP_CENTER);
 
-        Button level1Button = LevelButton.createLevelButton("Start!");
-        Label level1Text = LevelText.createLevelText("The entire game is comprised of 7 (+1 Bonus) levels. In each level you need to reach the penguin on the screen without being caught by other colleges. The difficulty of the game will increase. \n\n" +
-                "Level 1: Let's start very easy. The University that we TUM students despise the most is only guarding the penguin. This should be fairly easy.");
+        Button level1Button = LevelButton.createLevelButton("Next");
+        Label level1Text = LevelText.createLevelText("Instructions:\nThe game consists of 7 + 1 (Bonus) levels. In each level you need to reach the penguin on the screen without being caught by other colleges. Otherwise you lose. You move your player (TUM) with the mouse. Click on the canvas and you're going to steer in that direction \n" +
+                "Over the first semester I realized how innovative TUM is. Therefore, it's no surprise, that they brought a snowball-machine to the fight! In each level they can throw a total of 3 snowballs. You can throw the snowballs with 'x' or 'X'. Be careful! If you hit the penguin you lose. If you hit another college that college will be frozen for that level.");
         VBox layout1 = new VBox(40);
         layout1.setAlignment(Pos.TOP_CENTER);
 
+        Button level2Button = LevelButton.createLevelButton("Start!");
+        Label level2Text = LevelText.createLevelText("Level 1: Let's start very easy. The University that we TUM students despise the most is only guarding the penguin. This should be fairly easy.\n\nHave fun! Any feedback is welcome!\n-ge28lop");
+        VBox layout2 = new VBox(40);
+        layout2.setAlignment(Pos.TOP_CENTER);
 
         Pane gridLayout = createLayout(gameBoardUI, toolBar);
 
 
         layout0.getChildren().addAll(level0Text, level0Button);
         layout1.getChildren().addAll(level1Text, level1Button);
+        layout2.getChildren().addAll(level2Text, level2Button);
         Scene scene1 = new Scene(layout0, GRID_LAYOUT_PREF_WIDTH, GRID_LAYOUT_PREF_HEIGHT);
         Scene scene2 = new Scene(layout1, GRID_LAYOUT_PREF_WIDTH, GRID_LAYOUT_PREF_HEIGHT);
-        Scene scene3 = new Scene(gridLayout);
+        Scene scene3 = new Scene(layout2, GRID_LAYOUT_PREF_WIDTH, GRID_LAYOUT_PREF_HEIGHT);
+        Scene scene4 = new Scene(gridLayout);
 
         level0Button.setOnAction(e -> {
             primaryStage.setScene(scene2);
         });
         level1Button.setOnAction(e -> {
             primaryStage.setScene(scene3);
+        });
+        level2Button.setOnAction(e -> {
+            primaryStage.setScene(scene4);
         });
 
         primaryStage.setTitle("Bumpers");

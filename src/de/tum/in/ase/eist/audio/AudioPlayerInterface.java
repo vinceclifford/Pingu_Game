@@ -30,5 +30,5 @@ public interface AudioPlayerInterface {
 
 	void playLevelUp();
 
-
+	void playExplosion();
 }

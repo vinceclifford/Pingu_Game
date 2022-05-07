@@ -21,9 +21,9 @@ public class GameBoard1 extends GameBoard {
     @Override
     protected void createCars() {
         getCars().add(new LMU_Car(super.getSize(), 100, 80, 6, 90, false) );
-        /* getCars().add(new LMU_Car(super.getSize(), 60, 260, 5, 0, false) );
+        getCars().add(new LMU_Car(super.getSize(), 60, 260, 5, 0, false) );
         getCars().add(new LMU_Car(super.getSize(), 175, 200, 4, 0, false) );
         getCars().add(new LMU_Car(super.getSize(), 250, 200, 7, 0, false) );
-        getCars().add(new LMU_Car(super.getSize(), 175, 150, 4, 90, false) ); */
+        getCars().add(new LMU_Car(super.getSize(), 175, 150, 4, 90, false) );
     }
 }

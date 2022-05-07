@@ -7,14 +7,13 @@ public class Stanford_Car extends Car {
     private int counterInvisibility = 0;
     private int counterSpawn = 0;
     private String STANFORD_CAR_IMAGE_FILE = "Stanford.png";
-    private final String TOTAL_WHITE_CAR_FILE = "White.png";
 
     public Stanford_Car(Dimension2D gameBoardSize, boolean elon) {
         super(gameBoardSize);
-        if (elon){
+        if (elon) {
             STANFORD_CAR_IMAGE_FILE = "elon.png";
             setSize(new Dimension2D(40, 31));
-        } else{
+        } else {
             setSize(new Dimension2D(28, 40));
         }
         randomStartingPosition();
@@ -26,10 +25,9 @@ public class Stanford_Car extends Car {
 
     @Override
     public void drive(Dimension2D gameBoardSize) {
-        if (counterInvisibility == 30)
-            setIconLocation(TOTAL_WHITE_CAR_FILE);
-        else if (counterInvisibility == 45) {
-            setIconLocation(STANFORD_CAR_IMAGE_FILE);
+
+
+        if (counterInvisibility == 45) {
             counterInvisibility = 0;
         }
 
@@ -42,6 +40,10 @@ public class Stanford_Car extends Car {
         }
         counterSpawn++;
         counterInvisibility++;
+    }
+
+    public boolean isInvisible() {
+        return counterInvisibility >= 30 && counterInvisibility <= 39;
     }
 
 }

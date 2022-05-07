@@ -18,7 +18,7 @@ public class Pengu_Car extends Car {
             setSpeed(5);
         }
         setIconLocation(PENGU_CAR_IMAGE_FILE);
-        setSize(new Dimension2D(28, 39));
+        setSize(new Dimension2D(22, 39));
     }
 
 }

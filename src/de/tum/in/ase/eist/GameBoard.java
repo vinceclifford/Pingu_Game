@@ -6,6 +6,7 @@ import java.util.List;
 
 import de.tum.in.ase.eist.audio.AudioPlayerInterface;
 import de.tum.in.ase.eist.car.*;
+import de.tum.in.ase.eist.collision.BulletCollision;
 import de.tum.in.ase.eist.collision.Collision;
 import de.tum.in.ase.eist.collision.DefaultCollision;
 import de.tum.in.ase.eist.collision.PinguCollision;
@@ -17,6 +18,7 @@ import de.tum.in.ase.eist.collision.PinguCollision;
 public class GameBoard {
 
     protected LinkedList<Car> cars_apart_from_player = new LinkedList<Car>();
+    protected LinkedList<Bullet_Car> bullets = new LinkedList<>();
     private static final int NUMBER_OF_SLOW_CARS = 5;
     private static final int NUMBER_OF_TESLA_CARS = 2;
 
@@ -183,6 +185,15 @@ public class GameBoard {
         for (Car car : this.cars) {
             car.drive(size);
         }
+
+        LinkedList<Bullet_Car> temp = new LinkedList<>();
+        for (Bullet_Car b: bullets) {
+            b.drive(size);
+            if(!(b.getPosition().getX() > 600) && !(b.getPosition().getY() > 400) && !b.isCrunched())
+                temp.add(b);
+        }
+        bullets = temp;
+
         this.player.getCar().drive(size);
 
         // iterate through all cars (except player car) and check if it is crunched
@@ -204,32 +215,24 @@ public class GameBoard {
                     gameOutcome = GameOutcome.LOST;
                 }
             }
+        }
 
-            Collision collision = new DefaultCollision(player.getCar(), car);
+        for(Bullet_Car bullet : bullets){
+            // only need to check whether it hits a car
+            for(Car car : cars){
+                Collision c = new BulletCollision(bullet, car);
 
-            /*if (collision.isCrash()) {
-                Car winner = collision.evaluate();
-                Car loser = collision.evaluateLoser();
-                printWinner(winner);
-                loserCars.add(loser);
-                loser.crunch();
+                if(c.isCrash()){
+                    Car winner = c.evaluate();
+                    Car loser = c.evaluateLoser();
+                    winner.crunch();
+                    loser.crunch();
+                    audioPlayer.playExplosion();
 
-                this.audioPlayer.playCrashSound();
-
-                if (isWinner())
-                    gameOutcome = GameOutcome.WON;
-                else if (player.getCar().isCrunched())
-                    gameOutcome = GameOutcome.LOST;
-				else
-					gameOutcome = GameOutcome.OPEN;
-            }*/
-
-            /*
-             * Hint: you should set the attribute gameOutcome accordingly. Use 'isWinner()'
-             * below for your implementation
-             */
-
-
+                    if(winner instanceof Pengu_Car)
+                        gameOutcome = GameOutcome.LOST;
+                }
+            }
         }
     }
 
@@ -257,6 +260,7 @@ public class GameBoard {
         }
     }
 
-    public void reset() {
+    public LinkedList<Bullet_Car> getBullets() {
+        return bullets;
     }
 }
