@@ -22,7 +22,7 @@ public class DefaultCollision extends Collision {
 		Point2D p2 = getCar2().getPosition();
 
 		Car winnerCar = null;
-		if (p1.getX() > p2.getX()) {
+		if (p1.getX() < p2.getX()) {
 			winnerCar = this.getCar2();
 		} else {
 			winnerCar = this.getCar1();

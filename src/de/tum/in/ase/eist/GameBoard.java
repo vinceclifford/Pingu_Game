@@ -192,7 +192,7 @@ public class GameBoard {
                 continue;
             }
 
-            Collision c = new PinguCollision(getPlayerCar(), car);
+            /*Collision c = new PinguCollision(getPlayerCar(), car);
 
             if (c.isCrash()) {
                 Car winner = c.evaluate();
@@ -204,7 +204,7 @@ public class GameBoard {
                     gameOutcome = GameOutcome.LOST;
                 }
             }
-
+            */
             Collision collision = new DefaultCollision(player.getCar(), car);
 
             if (collision.isCrash()) {
