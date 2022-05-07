@@ -21,6 +21,10 @@ public abstract class Car {
 	private int speed;
 	private boolean crunched;
 
+	public boolean getCrunshed(){
+		return crunched;
+	}
+
 	private Point2D position;
 	/**
 	 * The direction as degree within a circle, a value between 0 (inclusive) and
@@ -68,6 +72,12 @@ public abstract class Car {
 	protected void setRandomSpeed() {
 		// We pass this.maxSpeed + 1 to include the value of maxSpeed
 		this.speed = calculateRandomInt(this.minSpeed, this.maxSpeed + 1);
+	}
+
+	public void randomStartingPosition(){
+			int x = (int) (Math.random() * 350 + 150);
+			int y = (int) (Math.random() * 150 + 150);
+			setPosition(x,y);
 	}
 
 	/**
@@ -191,6 +201,10 @@ public abstract class Car {
 		this.size = size;
 	}
 
+	public void setCrunched(boolean crunched) {
+		this.crunched = crunched;
+	}
+
 	public void crunch() {
 		this.crunched = true;
 		this.speed = 0;
@@ -243,4 +257,5 @@ public abstract class Car {
 	protected static double calculateRandomDouble(double minValue, double maxValue) {
 		return ThreadLocalRandom.current().nextDouble(minValue, maxValue);
 	}
+
 }

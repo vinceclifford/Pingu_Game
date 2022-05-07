@@ -12,12 +12,17 @@ import javafx.scene.media.MediaPlayer;
 public class AudioPlayer implements AudioPlayerInterface {
 
 	private static final String BACKGROUND_MUSIC_FILE = "Music.wav";
-	private static final String CRASH_SOUND_FILE = "Crash.wav";
+	private static final String CRASH_SOUND_FILE = "Fail_sound.mp3";
+	private static final String LEVEL_UP_SOUND_FILE = "level_up.mp3";
+
 
 	private static final double CRASH_SOUND_VOLUME = 0.5;
+	private static final double LEVEL_UP_SOUND_VOLUME = 0.5;
+
 
 	private final MediaPlayer musicPlayer;
 	private final AudioClip crashPlayer;
+	private final AudioClip levelUpPlayer;
 
 	/**
 	 * Constructs a new AudioPlayer by directly loading the background music and
@@ -26,6 +31,7 @@ public class AudioPlayer implements AudioPlayerInterface {
 	public AudioPlayer() {
 		this.musicPlayer = new MediaPlayer(loadAudioFile(BACKGROUND_MUSIC_FILE));
 		this.crashPlayer = new AudioClip(convertNameToUrl(CRASH_SOUND_FILE));
+		this.levelUpPlayer = new AudioClip(convertNameToUrl(LEVEL_UP_SOUND_FILE));
 	}
 
 	@Override
@@ -54,6 +60,12 @@ public class AudioPlayer implements AudioPlayerInterface {
 	public void playCrashSound() {
 		crashPlayer.play(CRASH_SOUND_VOLUME);
 	}
+
+	@Override
+	public void playLevelUp(){
+		levelUpPlayer.play(LEVEL_UP_SOUND_VOLUME);
+	}
+
 
 	private Media loadAudioFile(String fileName) {
 		return new Media(convertNameToUrl(fileName));

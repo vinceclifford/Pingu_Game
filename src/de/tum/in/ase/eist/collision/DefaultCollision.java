@@ -10,18 +10,7 @@ public class DefaultCollision extends Collision {
     }
 
 	public boolean detectCollision() {
-		Point2D p1 = getCar1().getPosition();
-		Dimension2D d1 = getCar1().getSize();
-
-		Point2D p2 = getCar2().getPosition();
-		Dimension2D d2 = getCar2().getSize();
-
-		boolean above = p1.getY() + d1.getHeight() < p2.getY();
-		boolean below = p1.getY() > p2.getY() + d2.getHeight();
-		boolean right = p1.getX() + d1.getWidth() < p2.getX();
-		boolean left = p1.getX() > p2.getX() + d2.getWidth();
-
-		return !above && !below && !right && !left;
+		return detectCollisionHelper();
 	}
 
 	public Car evaluate() {
@@ -29,7 +18,7 @@ public class DefaultCollision extends Collision {
 		// TODO Backlog Item 11: Collisions follow the "right before left" rule, and thus right-most
 		// cars on the screen win the collisions
 
-		Point2D p1 = getCar1().getPosition();
+		/*Point2D p1 = getCar1().getPosition();
 		Point2D p2 = getCar2().getPosition();
 
 		Car winnerCar = null;
@@ -38,6 +27,7 @@ public class DefaultCollision extends Collision {
 		} else {
 			winnerCar = this.getCar1();
 		}
-		return winnerCar;
+		return winnerCar;*/
+		return null;
 	}
 }

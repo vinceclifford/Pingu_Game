@@ -1,14 +1,14 @@
 package de.tum.in.ase.eist;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import de.tum.in.ase.eist.audio.AudioPlayerInterface;
-import de.tum.in.ase.eist.car.Car;
-import de.tum.in.ase.eist.car.FastCar;
-import de.tum.in.ase.eist.car.SlowCar;
+import de.tum.in.ase.eist.car.*;
 import de.tum.in.ase.eist.collision.Collision;
 import de.tum.in.ase.eist.collision.DefaultCollision;
+import de.tum.in.ase.eist.collision.PinguCollision;
 
 /**
  * Creates all car objects, detects collisions, updates car positions, notifies
@@ -16,6 +16,7 @@ import de.tum.in.ase.eist.collision.DefaultCollision;
  */
 public class GameBoard {
 
+	protected LinkedList<Car> cars_apart_from_player = new LinkedList<Car>();
 	private static final int NUMBER_OF_SLOW_CARS = 5;
 	private static final int NUMBER_OF_TESLA_CARS = 2;
 
@@ -61,9 +62,10 @@ public class GameBoard {
 	 */
 	public GameBoard(Dimension2D size) {
 		this.size = size;
-		FastCar playerCar = new FastCar(size);
+		TUM_Car playerCar = new TUM_Car(size);
 		this.player = new Player(playerCar);
 		this.player.setup();
+		cars.add(new Pengu_Car(size, true));
 		createCars();
 	}
 
@@ -71,8 +73,7 @@ public class GameBoard {
 	 * Creates as many cars as specified by {@link #NUMBER_OF_SLOW_CARS} and adds
 	 * them to the cars list.
 	 */
-	private void createCars() {
-		// TODO Backlog Item 6: Add a new car type
+	protected void createCars() {
 		for (int i = 0; i < NUMBER_OF_SLOW_CARS; i++) {
 			this.cars.add(new SlowCar(this.size));
 		}
@@ -191,16 +192,22 @@ public class GameBoard {
 				continue;
 			}
 
-			// TODO Backlog Item 16: Add a new collision type
-			/*
-			 * Hint: Make sure to create a subclass of the class Collision and store it in
-			 * the new Collision package. Create a new collision object and check if the
-			 * collision between player car and autonomous car evaluates as expected
-			 */
+			Collision c = new PinguCollision(getPlayerCar(), car);
+
+			if(c.isCrash()){
+				Car winner = c.evaluate();
+				if(winner instanceof Pengu_Car){
+					gameOutcome = GameOutcome.NEXT_LEVEL;
+				} else {
+					loserCars.add(getPlayerCar());
+					getPlayerCar().crunch();
+					gameOutcome = GameOutcome.LOST;
+				}
+			}
 
 			Collision collision = new DefaultCollision(player.getCar(), car);
 
-			if (collision.isCrash()) {
+			/*if (collision.isCrash()) {
 				Car winner = collision.evaluate();
 				Car loser = collision.evaluateLoser();
 				printWinner(winner);
@@ -210,13 +217,13 @@ public class GameBoard {
 
 				// TODO Backlog Item 11: The loser car is crunched and stops driving
 
-				// TODO Backlog Item 11: The player gets notified when he looses or wins the game
+				// TODO Backlog Item 11: The player gets notified when he looses or wins the game*/
 				/*
 				 * Hint: you should set the attribute gameOutcome accordingly. Use 'isWinner()'
 				 * below for your implementation
 				 */
 
-			}
+
 		}
 	}
 
@@ -243,4 +250,6 @@ public class GameBoard {
 			System.err.println("Winner car was null!");
 		}
 	}
+
+	public void reset(){}
 }
