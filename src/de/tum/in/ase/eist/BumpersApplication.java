@@ -53,7 +53,7 @@ public class BumpersApplication extends Application {
 
         Button level1Button = LevelButton.createLevelButton("Next");
         Label level1Text = LevelText.createLevelText("Instructions:\nThe game consists of 7 + 1 (Bonus) levels. In each level you need to reach the penguin on the screen without being caught by other colleges. Otherwise you lose. You move your player (TUM) with the mouse. Click on the canvas and you're going to steer in that direction \n" +
-                "Over the first semester I realized how innovative TUM is. Therefore, it's no surprise, that they brought a snowball-machine to the fight! In each level they can throw a total of 3 snowballs. You can throw the snowballs with 'x' or 'X'. Be careful! If you hit the penguin you lose. If you hit another college that college will be frozen for that level.");
+                "In my first semester I realized how innovative TUM is. Therefore, it's no surprise, that they brought a snowball-machine to the fight! In each level they can throw a total of 3 snowballs. You can throw the snowballs with 'x' or 'X'. Be careful! If you hit the penguin you lose. If you hit another college that college will be frozen for that level.");
         VBox layout1 = new VBox(40);
         layout1.setAlignment(Pos.TOP_CENTER);
 
