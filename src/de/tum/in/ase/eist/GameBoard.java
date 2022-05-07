@@ -192,7 +192,7 @@ public class GameBoard {
                 continue;
             }
 
-            /*Collision c = new PinguCollision(getPlayerCar(), car);
+            Collision c = new PinguCollision(getPlayerCar(), car);
 
             if (c.isCrash()) {
                 Car winner = c.evaluate();
@@ -204,10 +204,10 @@ public class GameBoard {
                     gameOutcome = GameOutcome.LOST;
                 }
             }
-            */
+
             Collision collision = new DefaultCollision(player.getCar(), car);
 
-            if (collision.isCrash()) {
+            /*if (collision.isCrash()) {
                 Car winner = collision.evaluate();
                 Car loser = collision.evaluateLoser();
                 printWinner(winner);
@@ -222,7 +222,7 @@ public class GameBoard {
                     gameOutcome = GameOutcome.LOST;
 				else
 					gameOutcome = GameOutcome.OPEN;
-            }
+            }*/
 
             /*
              * Hint: you should set the attribute gameOutcome accordingly. Use 'isWinner()'
