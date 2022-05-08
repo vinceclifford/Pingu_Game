@@ -11,7 +11,7 @@ public class TUM_Car extends Car{
 
     public TUM_Car(Dimension2D gameBoardSize) {
         super(gameBoardSize);
-        setSpeed(7);
+        setSpeed(6);
         setIconLocation(TUM_CAR_IMAGE_FILE);
         setPosition(0 , 0);
         setSize(new Dimension2D(43,20));

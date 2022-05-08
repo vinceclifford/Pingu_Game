@@ -16,7 +16,7 @@ public class Harvard_Car extends Car {
         }
         randomStartingPosition();
         setIconLocation(HARVARD_CAR_IMAGE_FILE);
-        setSpeed(10);
+        setSpeed(9);
         setRandomDirection();
     }
 

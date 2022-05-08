@@ -21,8 +21,8 @@ public class MIT_Car extends Car{
         }
         randomStartingPosition();
         setIconLocation(MIT_CAR_IMAGE_FILE);
-        setMinSpeed(7);
-        setMaxSpeed(11);
+        setMinSpeed(8);
+        setMaxSpeed(10);
         setRandomSpeed();
         setRandomDirection();
     }

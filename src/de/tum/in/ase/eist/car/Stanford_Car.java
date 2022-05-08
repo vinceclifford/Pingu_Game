@@ -19,7 +19,7 @@ public class Stanford_Car extends Car {
         randomStartingPosition();
         setIconLocation(STANFORD_CAR_IMAGE_FILE);
 
-        setSpeed(10);
+        setSpeed(9);
         setRandomDirection();
     }
 
